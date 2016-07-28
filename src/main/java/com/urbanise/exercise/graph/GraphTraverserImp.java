@@ -55,6 +55,7 @@ public class GraphTraverserImp<T> implements GraphTraverser<T> {
             visitChildElements(graph, node, child -> {
                 if (child == inputNode) {
                     visitor.visit(node);
+                    // Parent confirmed. Stop the traversal.
                     return false;
                 }
                 return true;

@@ -16,7 +16,7 @@ public class Application {
     }
 
     private void run() {
-        GraphDependencyCalculator<String> dependencyCalculator = new GraphDependencyCalculator<>(new GraphTraverserImp<>());
+        TransitiveDependencyCalculator<String> dependencyCalculator = new TransitiveDependencyCalculator<>(new GraphTraverserImp<>());
 
         Map<String, Set<String>> directDependencyGraph = prepareSampleGraph();
 

@@ -14,15 +14,15 @@ import static org.junit.Assert.*;
 /**
  * Created by btodorov on 7/28/16.
  */
-public class GraphDependencyCalculatorTest {
+public class TransitiveDependencyCalculatorTest {
 
-    private static GraphDependencyCalculator<String> dependencyCalculator;
+    private static TransitiveDependencyCalculator<String> dependencyCalculator;
     private static Map<String, Set<String>> inputGraph;
 
     @BeforeClass
     public static void setupTest(){
         // Create mock GraphTraverser
-        dependencyCalculator = new GraphDependencyCalculator<>(new GraphTraverser<String>() {
+        dependencyCalculator = new TransitiveDependencyCalculator<>(new GraphTraverser<String>() {
             @Override
             public void visitChildElements(Map<String, Set<String>> graph, String node, Visitor<String> visitor) {
                 visitor.visit("A");

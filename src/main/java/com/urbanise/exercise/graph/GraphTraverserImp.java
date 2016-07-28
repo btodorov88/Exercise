@@ -21,8 +21,8 @@ public class GraphTraverserImp<T> implements GraphTraverser<T> {
      * @param visitor {@link Visitor} that will be notified for every node that is being traversed.
      */
     @Override
-    public void visitChildElements(Map<T, Set<T>> graph, T node, Visitor<T> visitor) {
-            Set<T> visited = new HashSet<T>();
+    public void visitChildNodes(Map<T, Set<T>> graph, T node, Visitor<T> visitor) {
+            Set<T> visited = new HashSet<>();
             dfs(graph, node, visited, visitor);
     }
 
@@ -50,9 +50,9 @@ public class GraphTraverserImp<T> implements GraphTraverser<T> {
      * @param visitor {@link Visitor} that will be notified for every node that is being traversed.
      */
     @Override
-    public void visitParentElements(Map<T, Set<T>> graph, T inputNode, Visitor<T> visitor) {
+    public void visitParentNodes(Map<T, Set<T>> graph, T inputNode, Visitor<T> visitor) {
         for(T node : graph.keySet()){
-            visitChildElements(graph, node, child -> {
+            visitChildNodes(graph, node, child -> {
                 if (child == inputNode) {
                     visitor.visit(node);
                     // Parent confirmed. Stop the traversal.

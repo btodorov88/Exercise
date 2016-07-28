@@ -45,7 +45,7 @@ public class Application {
     }
 
     /**
-     * Creates example dependency graph.
+     * Creates example dependency graph. The graph contains only the direct dependencies.
      */
     private Map<String, Set<String>> prepareSampleGraph() {
         Map<String,Set<String>> graph = new HashMap<>();

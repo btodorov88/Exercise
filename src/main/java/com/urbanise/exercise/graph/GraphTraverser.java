@@ -18,7 +18,7 @@ public interface GraphTraverser<T> {
      * @param node the starting node for the traversal.
      * @param visitor {@link Visitor} that will be notified for every node that is being traversed.
      */
-    void visitChildElements(Map<T, Set<T>> graph, T node, Visitor<T> visitor);
+    void visitChildNodes(Map<T, Set<T>> graph, T node, Visitor<T> visitor);
 
     /**
      * Traverse and visit all parent nodes for the provided input node in the graph.
@@ -27,5 +27,5 @@ public interface GraphTraverser<T> {
      * @param node the starting node for the traversal.
      * @param visitor {@link Visitor} that will be notified for every node that is being traversed.
      */
-    void visitParentElements(Map<T, Set<T>> graph, T node, Visitor<T> visitor);
+    void visitParentNodes(Map<T, Set<T>> graph, T node, Visitor<T> visitor);
 }

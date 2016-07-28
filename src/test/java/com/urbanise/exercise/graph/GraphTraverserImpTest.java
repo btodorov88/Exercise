@@ -24,10 +24,10 @@ public class GraphTraverserImpTest {
         traverser = new GraphTraverserImp<>();
 
         graph = createTestGraph();
-        cyclicGraph = createTestGraphWithCicle();
+        cyclicGraph = createTestGraphWithCycle();
     }
 
-    private static Map<String, Set<String>>  createTestGraphWithCicle() {
+    private static Map<String, Set<String>>  createTestGraphWithCycle() {
         Map<String, Set<String>> graph = new HashMap<>();
 
         HashSet<String> children = new HashSet<>();
@@ -71,35 +71,35 @@ public class GraphTraverserImpTest {
     }
 
     @Test
-    public void testVisitChildElements() throws Exception {
+    public void testVisitChildNodes() throws Exception {
         Set<String> expectedResult = new HashSet<>();
         expectedResult.add("A");
         expectedResult.add("C");
         expectedResult.add("G");
 
         Set<String> result = new HashSet<>();
-        traverser.visitChildElements(graph, "A", e -> result.add(e));
+        traverser.visitChildNodes(graph, "A", result::add);
 
         assertEquals(expectedResult, result);
 
     }
 
     @Test
-    public void testVisitChildElementsWithCicles() throws Exception {
+    public void testVisitChildNodesWithCycles() throws Exception {
         Set<String> expectedResult = new HashSet<>();
         expectedResult.add("A");
         expectedResult.add("B");
         expectedResult.add("C");
 
         Set<String> result = new HashSet<>();
-        traverser.visitChildElements(cyclicGraph, "A", e -> result.add(e));
+        traverser.visitChildNodes(cyclicGraph, "A", result::add);
 
         assertEquals(expectedResult, result);
 
     }
 
     @Test
-    public void testVisitParentElements() throws Exception {
+    public void testVisitParentNodes() throws Exception {
         Set<String> expectedResult = new HashSet<>();
         expectedResult.add("A");
         expectedResult.add("B");
@@ -107,20 +107,20 @@ public class GraphTraverserImpTest {
         expectedResult.add("G");
 
         Set<String> result = new HashSet<>();
-        traverser.visitParentElements(graph, "G", e -> result.add(e));
+        traverser.visitParentNodes(graph, "G", result::add);
 
         assertEquals(expectedResult, result);
     }
 
     @Test
-    public void testVisitParentElementsWithCicles() throws Exception {
+    public void testVisitParentNodesWithCycles() throws Exception {
         Set<String> expectedResult = new HashSet<>();
         expectedResult.add("A");
         expectedResult.add("B");
         expectedResult.add("C");
 
         Set<String> result = new HashSet<>();
-        traverser.visitParentElements(cyclicGraph, "A", e -> result.add(e));
+        traverser.visitParentNodes(cyclicGraph, "A", result::add);
 
         assertEquals(expectedResult, result);
     }

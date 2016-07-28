@@ -24,14 +24,14 @@ public class TransitiveDependencyCalculatorTest {
         // Create mock GraphTraverser
         dependencyCalculator = new TransitiveDependencyCalculator<>(new GraphTraverser<String>() {
             @Override
-            public void visitChildElements(Map<String, Set<String>> graph, String node, Visitor<String> visitor) {
+            public void visitChildNodes(Map<String, Set<String>> graph, String node, Visitor<String> visitor) {
                 visitor.visit("A");
                 visitor.visit("B");
                 visitor.visit("C");
             }
 
             @Override
-            public void visitParentElements(Map<String, Set<String>> graph, String node, Visitor<String> visitor) {
+            public void visitParentNodes(Map<String, Set<String>> graph, String node, Visitor<String> visitor) {
                 visitor.visit("A");
                 visitor.visit("B");
                 visitor.visit("C");

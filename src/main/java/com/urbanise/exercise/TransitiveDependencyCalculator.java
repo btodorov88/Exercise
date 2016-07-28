@@ -10,7 +10,7 @@ import java.util.Set;
 /**
  * Responsible to provide an implementation that calculates transitive dependencies based on the direct ones.
  *
- * @param <T> the type of the nodes.
+ * @param <T> the type of the items that have dependencies between each other.
  */
 public class TransitiveDependencyCalculator<T> {
     private GraphTraverser<T> graphTraverser;
@@ -25,7 +25,7 @@ public class TransitiveDependencyCalculator<T> {
     /**
      * Calculates all transitive dependencies for the provided graph.
      *
-     * @param graph the input graph.
+     * @param graph the input graph representing the direct dependencies.
      * @return graph containing all transitive dependencies.
      */
     public Map<T, Set<T>> getChildTransitiveDependencies(Map<T, Set<T>> graph){
@@ -33,13 +33,14 @@ public class TransitiveDependencyCalculator<T> {
 
         Map<T, Set<T>> result = new HashMap<>();
 
+        // Calculate the transitive dependencies for each item(node).
         for(T node:graph.keySet()){
 
             Set<T> dependencies = new HashSet<>();
 
-            graphTraverser.visitChildElements(graph, node, element -> {
-                if (element != node)
-                    dependencies.add(element);
+            graphTraverser.visitChildNodes(graph, node, child -> {
+                if (child != node)
+                    dependencies.add(child);
                 return true;
             });
 
@@ -52,21 +53,22 @@ public class TransitiveDependencyCalculator<T> {
     /**
      * Calculates all inverse(parent) transitive dependencies for the provided graph.
      *
-     * @param graph the input graph.
-     * @return graph containing all transitive dependencies.
+     * @param graph the input graph representing the direct dependencies.
+     * @return graph containing all inverse(parent) transitive dependencies.
      */
     public Map<T, Set<T>> getParentTransitiveDependencies(Map<T, Set<T>> graph){
         validateInputGraph(graph);
 
         Map<T, Set<T>> result = new HashMap<>();
 
+        // Calculate the transitive dependencies for each item(node).
         for(T node:graph.keySet()){
 
             Set<T> dependencies = new HashSet<>();
 
-            graphTraverser.visitParentElements(graph, node, element -> {
-                if (element != node)
-                    dependencies.add(element);
+            graphTraverser.visitParentNodes(graph, node, parent -> {
+                if (parent != node)
+                    dependencies.add(parent);
                 return true;
             });
 

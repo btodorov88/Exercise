@@ -21,7 +21,7 @@ public class TransitiveDependencyCalculatorTest {
 
     @BeforeClass
     public static void setupTest(){
-        // Create mock GraphTraverser
+        // Create a mock GraphTraverser
         dependencyCalculator = new TransitiveDependencyCalculator<>(new GraphTraverser<String>() {
             @Override
             public void visitChildNodes(Map<String, Set<String>> graph, String node, Visitor<String> visitor) {
@@ -44,6 +44,7 @@ public class TransitiveDependencyCalculatorTest {
     private static void createTestGraph() {
         inputGraph = new HashMap<>();
 
+        // No need for actual dependencies because of the mocked GraphTraverser.
         inputGraph.put("A", null);
         inputGraph.put("B", null);
         inputGraph.put("C", null);

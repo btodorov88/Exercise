@@ -14,7 +14,7 @@ import java.util.Set;
 public class GraphTraverserImp<T> implements GraphTraverser<T> {
 
     /**
-     * Traverse and visit all child nodes for the provided input node in the graph.
+     * Traverses and visits all child nodes for the provided input node in the graph.
      *
      * @param graph the input graph.
      * @param node the starting node for the traversal.
@@ -43,7 +43,7 @@ public class GraphTraverserImp<T> implements GraphTraverser<T> {
     }
 
     /**
-     * Traverse and visit all parent nodes for the provided input node in the graph.
+     * Traverses and visits all parent nodes for the provided input node in the graph.
      *
      * @param graph the input graph.
      * @param inputNode the starting node for the traversal.

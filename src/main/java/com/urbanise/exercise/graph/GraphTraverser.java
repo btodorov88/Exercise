@@ -6,13 +6,13 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * A class can implement the {@link GraphTraverser} interface to provide implementation for the graph traversal methods.
+ * A class can implement the {@link GraphTraverser} interface to provide implementation for the graph traversal algorithms.
  *
  * @param <T> the type of the nodes.
  */
 public interface GraphTraverser<T> {
     /**
-     * Traverse and visit all child nodes for the provided input node in the graph.
+     * Traverses and visits all child nodes for the provided input node in the graph.
      *
      * @param graph the input graph.
      * @param node the starting node for the traversal.
@@ -21,7 +21,7 @@ public interface GraphTraverser<T> {
     void visitChildNodes(Map<T, Set<T>> graph, T node, Visitor<T> visitor);
 
     /**
-     * Traverse and visit all parent nodes for the provided input node in the graph.
+     * Traverses and visits all parent nodes for the provided input node in the graph.
      *
      * @param graph the input graph.
      * @param node the starting node for the traversal.

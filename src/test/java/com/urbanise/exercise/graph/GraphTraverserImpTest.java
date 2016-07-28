@@ -30,7 +30,7 @@ public class GraphTraverserImpTest {
     private static Map<String, Set<String>>  createTestGraphWithCycle() {
         Map<String, Set<String>> graph = new HashMap<>();
 
-        HashSet<String> children = new HashSet<>();
+        Set<String> children = new HashSet<>();
         children.add("B");
 
         graph.put("A", children);
@@ -50,7 +50,7 @@ public class GraphTraverserImpTest {
 
     private static Map<String, Set<String>> createTestGraph() {
         Map<String, Set<String>>  graph = new HashMap<>();
-        HashSet<String> children = new HashSet<>();
+        Set<String> children = new HashSet<>();
         children.add("C");
 
         graph.put("A", children);

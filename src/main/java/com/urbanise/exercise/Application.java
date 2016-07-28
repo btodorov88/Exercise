@@ -2,7 +2,10 @@ package com.urbanise.exercise;
 
 import com.urbanise.exercise.graph.GraphTraverserImp;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -38,9 +41,9 @@ public class Application {
      * @param graph the graph that will be visualized.
      */
     private void prettyPrint(Map<String, Set<String>> graph) {
-        for(String element : graph.keySet()){
-            String dependentElements = graph.get(element).stream().collect(Collectors.joining(" "));
-            System.out.println(element + " " + dependentElements);
+        for(String node : graph.keySet()){
+            String dependentNodes = graph.get(node).stream().collect(Collectors.joining(" "));
+            System.out.println(node + " " + dependentNodes);
         }
     }
 
@@ -49,7 +52,7 @@ public class Application {
      */
     private Map<String, Set<String>> prepareSampleGraph() {
         Map<String,Set<String>> graph = new HashMap<>();
-        HashSet<String> children = new HashSet<>();
+        Set<String> children = new HashSet<>();
         children.add("B");
         children.add("C");
 

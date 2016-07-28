@@ -1,0 +1,31 @@
+package com.urbanise.exercise.graph;
+
+import com.urbanise.exercise.visitor.Visitor;
+
+import java.util.Map;
+import java.util.Set;
+
+/**
+ * A class can implement the {@link GraphTraverser} interface to provide implementation for the graph traversal methods.
+ *
+ * @param <T> the type of the nodes.
+ */
+public interface GraphTraverser<T> {
+    /**
+     * Traverse and visit all child nodes for the provided input node in the graph.
+     *
+     * @param graph the input graph.
+     * @param node the starting node for the traversal.
+     * @param visitor {@link Visitor} that will be notified for every node that is being traversed.
+     */
+    void visitChildElements(Map<T, Set<T>> graph, T node, Visitor<T> visitor);
+
+    /**
+     * Traverse and visit all parent nodes for the provided input node in the graph.
+     *
+     * @param graph the input graph.
+     * @param node the starting node for the traversal.
+     * @param visitor {@link Visitor} that will be notified for every node that is being traversed.
+     */
+    void visitParentElements(Map<T, Set<T>> graph, T node, Visitor<T> visitor);
+}

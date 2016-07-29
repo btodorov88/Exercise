@@ -28,7 +28,7 @@ public class ConsoleDependencyReaderTest {
         InputStream in = new ByteArrayInputStream(input.toString().getBytes(StandardCharsets.UTF_8));
 
         ConsoleDependencyReader dependencyReader = new ConsoleDependencyReader(in);
-        Map<String, Set<String>> dependencies = dependencyReader.readDependencyGraphFromConsole();
+        Map<String, Set<String>> dependencies = dependencyReader.readDependencyGraph();
 
         assertArrayEquals(new String[] {"B", "C"}, dependencies.get("A").toArray());
         assertArrayEquals(new String[] {"D"}, dependencies.get("B").toArray());

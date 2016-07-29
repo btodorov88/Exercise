@@ -21,7 +21,7 @@ public class Application {
         TransitiveDependencyCalculator<String> dependencyCalculator = new TransitiveDependencyCalculator<>(new GraphTraverserImp<>());
         DependencyReader dependencyReader = new ConsoleDependencyReader();
 
-        Map<String, Set<String>> directDependencyGraph = dependencyReader.readDependencyGraphFromConsole();
+        Map<String, Set<String>> directDependencyGraph = dependencyReader.readDependencyGraph();
 
         System.out.println("Direct dependencies:");
         prettyPrint(directDependencyGraph);

@@ -13,5 +13,5 @@ public interface DependencyReader {
      *
      * @return the dependency graph
      */
-    Map<String, Set<String>> readDependencyGraphFromConsole();
+    Map<String, Set<String>> readDependencyGraph();
 }

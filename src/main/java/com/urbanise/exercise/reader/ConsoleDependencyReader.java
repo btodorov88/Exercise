@@ -27,15 +27,15 @@ public class ConsoleDependencyReader implements DependencyReader {
      * @return the dependency graph
      */
     @Override
-    public Map<String, Set<String>> readDependencyGraphFromConsole() {
+    public Map<String, Set<String>> readDependencyGraph() {
         System.out.println("Welcome to the Coding Exercise!");
         System.out.println("Please enter input dependencies. When done press Enter to start the calculation.");
 
 
-        return readGraph(new Scanner(inputStream));
+        return readGraphFromConsole(new Scanner(inputStream));
     }
 
-    private Map<String, Set<String>> readGraph(Scanner sc) {
+    private Map<String, Set<String>> readGraphFromConsole(Scanner sc) {
         String inputLine = sc.nextLine().trim();
         Map<String, Set<String>> graph = new HashMap<>();
         while(!inputLine.isEmpty()) {

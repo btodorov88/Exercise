@@ -12,9 +12,6 @@ import java.util.stream.Collectors;
  */
 public class Application {
 
-    // Reads the dependency graph from the Console
-    private final DependencyReader dependencyReader = new ConsoleDependencyReader();
-
     public static void main(String[] args) {
 
         new Application().run();
@@ -22,6 +19,7 @@ public class Application {
 
     private void run() {
         TransitiveDependencyCalculator<String> dependencyCalculator = new TransitiveDependencyCalculator<>(new GraphTraverserImp<>());
+        DependencyReader dependencyReader = new ConsoleDependencyReader();
 
         Map<String, Set<String>> directDependencyGraph = dependencyReader.readDependencyGraphFromConsole();
 

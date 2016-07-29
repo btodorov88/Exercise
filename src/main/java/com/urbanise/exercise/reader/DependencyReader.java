@@ -6,12 +6,14 @@ import java.util.Set;
 /**
  * A class can implement the {@link DependencyReader} interface to provide implementation for reading
  * a dependency graph from an input source.
+ *
+ * @param <T> the type of the graph nodes.
  */
-public interface DependencyReader {
+public interface DependencyReader<T> {
     /**
      * Reads a dependency graph from an input source.
      *
      * @return the dependency graph
      */
-    Map<String, Set<String>> readDependencyGraph();
+    Map<T, Set<T>> readDependencyGraph();
 }

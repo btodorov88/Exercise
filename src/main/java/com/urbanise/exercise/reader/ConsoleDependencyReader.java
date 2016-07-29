@@ -6,7 +6,7 @@ import java.util.*;
 /**
  * Provides and implementation that is capable of reading a dependency graph from the console.
  */
-public class ConsoleDependencyReader implements DependencyReader {
+public class ConsoleDependencyReader implements DependencyReader<String> {
 
     private final InputStream inputStream;
 

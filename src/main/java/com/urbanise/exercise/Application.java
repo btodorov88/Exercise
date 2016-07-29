@@ -9,7 +9,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
- * Implementation of the Urbanise Coding Exercise.
+ * The main class of the application which provides an implementation
+ * for the Urbanise Coding Exercise.
  */
 public class Application {
 
@@ -17,23 +18,26 @@ public class Application {
 
         new Application().run();
     }
-
+    
     private void run() {
         TransitiveDependencyCalculator<String> dependencyCalculator = new TransitiveDependencyCalculator<>(new GraphTraverserImp<>());
         DependencyReader dependencyReader = new ConsoleDependencyReader();
 
         Map<String, Set<String>> directDependencyGraph = dependencyReader.readDependencyGraph();
 
+        // Print the input dependencies
         System.out.println("Direct dependencies:");
         prettyPrint(directDependencyGraph);
 
+        // Calculate and print the transitive dependencies
         Map<String, Set<String>> transitiveDependencies = dependencyCalculator.getChildTransitiveDependencies(directDependencyGraph);
         System.out.println("Child transitive dependencies:");
         prettyPrint(transitiveDependencies);
 
-        Map<String, Set<String>> reversedTransitiveDependencies = dependencyCalculator.getParentTransitiveDependencies(directDependencyGraph);
-        System.out.println("Parent transitive dependencies:");
-        prettyPrint(reversedTransitiveDependencies);
+        // Calculate and print the inverse transitive dependencies
+        Map<String, Set<String>> inverseTransitiveDependencies = dependencyCalculator.getParentTransitiveDependencies(directDependencyGraph);
+        System.out.println("Inverse (parent) transitive dependencies:");
+        prettyPrint(inverseTransitiveDependencies);
     }
 
     /**

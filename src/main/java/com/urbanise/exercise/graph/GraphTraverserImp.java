@@ -53,7 +53,7 @@ public class GraphTraverserImp<T> implements GraphTraverser<T> {
     public void visitParentNodes(Map<T, Set<T>> graph, T inputNode, Visitor<T> visitor) {
         for(T node : graph.keySet()){
             visitChildNodes(graph, node, child -> {
-                if (child == inputNode) {
+                if (child.equals(inputNode)) {
                     visitor.visit(node);
                     // Parent confirmed. Stop the traversal.
                     return false;

@@ -1,17 +1,19 @@
 package com.urbanise.exercise;
 
 import com.urbanise.exercise.graph.GraphTraverserImp;
+import com.urbanise.exercise.reader.ConsoleDependencyReader;
+import com.urbanise.exercise.reader.DependencyReader;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
  * Implementation of the Urbanise Coding Exercise.
  */
 public class Application {
+
+    // Reads the dependency graph from the Console
+    private final DependencyReader dependencyReader = new ConsoleDependencyReader();
 
     public static void main(String[] args) {
 
@@ -21,7 +23,7 @@ public class Application {
     private void run() {
         TransitiveDependencyCalculator<String> dependencyCalculator = new TransitiveDependencyCalculator<>(new GraphTraverserImp<>());
 
-        Map<String, Set<String>> directDependencyGraph = prepareSampleGraph();
+        Map<String, Set<String>> directDependencyGraph = dependencyReader.readDependencyGraphFromConsole();
 
         System.out.println("Direct dependencies:");
         prettyPrint(directDependencyGraph);
@@ -45,46 +47,5 @@ public class Application {
             String dependentNodes = graph.get(node).stream().collect(Collectors.joining(" "));
             System.out.println(node + " " + dependentNodes);
         }
-    }
-
-    /**
-     * Creates an example dependency graph. The graph contains only the direct dependencies.
-     */
-    private Map<String, Set<String>> prepareSampleGraph() {
-        Map<String,Set<String>> graph = new HashMap<>();
-        Set<String> children = new HashSet<>();
-        children.add("B");
-        children.add("C");
-
-        graph.put("A", children);
-
-        children = new HashSet<>();
-        children.add("C");
-        children.add("E");
-
-        graph.put("B", children);
-
-        children = new HashSet<>();
-        children.add("G");
-
-        graph.put("C", children);
-
-        children = new HashSet<>();
-        children.add("A");
-        children.add("F");
-
-        graph.put("D", children);
-
-        children = new HashSet<>();
-        children.add("F");
-
-        graph.put("E", children);
-
-        children = new HashSet<>();
-        children.add("H");
-
-        graph.put("F", children);
-
-        return graph;
     }
 }

@@ -39,7 +39,7 @@ public class TransitiveDependencyCalculator<T> {
             Set<T> dependencies = new HashSet<>();
 
             graphTraverser.visitChildNodes(graph, node, child -> {
-                if (child != node)
+                if (!child.equals(node))
                     dependencies.add(child);
                 return true;
             });
@@ -67,7 +67,7 @@ public class TransitiveDependencyCalculator<T> {
             Set<T> dependencies = new HashSet<>();
 
             graphTraverser.visitParentNodes(graph, node, parent -> {
-                if (parent != node)
+                if (!parent.equals(node))
                     dependencies.add(parent);
                 return true;
             });

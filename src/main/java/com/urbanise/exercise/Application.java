@@ -4,7 +4,8 @@ import com.urbanise.exercise.graph.GraphTraverserImp;
 import com.urbanise.exercise.reader.ConsoleDependencyReader;
 import com.urbanise.exercise.reader.DependencyReader;
 
-import java.util.*;
+import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
